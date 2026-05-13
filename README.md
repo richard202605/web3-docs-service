@@ -1,6 +1,11 @@
 # Web3 Developer Documentation Service
 
-I write developer tutorials, build diagnostic tools, and create technical guides that help Web3 projects onboard developers faster.
+I write developer tutorials, build diagnostic tools, and create technical content that helps Web3 projects onboard developers faster.
+
+## Free Tools
+
+- **[Documentation Quality Audit GitHub Action](https://github.com/richard202605/doc-audit-action)** — Add to your repo to automatically audit documentation quality on every PR. Score 0-100 with improvement suggestions.
+- **[Documentation Quality Auditor CLI](tools/doc_audit.py)** — Run from terminal to audit any GitHub repo's documentation. Python script, no dependencies.
 
 ## Portfolio
 
@@ -27,10 +32,6 @@ I write developer tutorials, build diagnostic tools, and create technical guides
 | Tutorial | $200-400 | 2,500-4,000 words + code repo + diagnostic tool |
 | Deep Dive | $500-800 | 4,000-6,000 words + 3-6 code modules + test suite |
 | Documentation Suite | $1,000-2,000 | 3-5 tutorials + shared library + CI/CD + docs site |
-
-## Free Tools
-
-- [Documentation Quality Auditor](tools/doc_audit.py) — Analyze any GitHub repo's documentation quality
 
 ## Contact
 
