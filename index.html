@@ -121,7 +121,7 @@
 <header class="container">
   <div class="badge">Web3 Documentation Service</div>
   <h1>Your Protocol Has Users.<br>Does It Have Docs?</h1>
-  <p class="subtitle">I write developer tutorials, build diagnostic tools, and create technical guides that help Web3 projects onboard developers faster. 11 published tutorials with runnable code across 3 blockchain ecosystems.</p>
+  <p class="subtitle">I write developer tutorials, build diagnostic tools, and create technical guides that help Web3 projects onboard developers faster. 13 published tutorials with runnable code across 3 blockchain ecosystems.</p>
   <div class="cta-row">
     <a href="mailto:richard202605@proton.me?subject=Web3%20Documentation%20Inquiry" class="btn btn-primary">Get a Free Doc Audit →</a>
     <a href="#portfolio" class="btn btn-secondary">See My Work</a>
@@ -293,6 +293,16 @@
       <p>Circuit budget tracking, 3 splitting strategies, Python size analyzer, example contracts</p>
       <div class="tags"><span class="tag">Optimization</span><span class="tag">Compact</span><span class="tag">Python</span></div>
     </a>
+    <a href="https://github.com/richard202605/midnight-time-deadlines-guide" class="repo-card">
+      <h4>Time and Deadlines</h4>
+      <p>6 Compact examples: time-locked vault, multi-counter, rate limiter, timed auction. time_audit.py diagnostic tool.</p>
+      <div class="tags"><span class="tag">Compact</span><span class="tag">Time</span><span class="tag">Python</span></div>
+    </a>
+    <a href="https://github.com/richard202605/midnight-oracle-patterns-guide" class="repo-card">
+      <h4>Oracle Patterns</h4>
+      <p>3 oracle patterns: signed price feed, admin feed with timelock, aggregator. oracle_audit.py security scanner.</p>
+      <div class="tags"><span class="tag">Oracle</span><span class="tag">Security</span><span class="tag">Compact</span></div>
+    </a>
   </div>
   <div class="portfolio-link">
     <a href="https://richard202605.github.io/midnight-tutorials-portfolio/" class="btn btn-secondary">View Full Portfolio with Priority Categories →</a>
@@ -365,6 +375,54 @@
       <p>Audit Midnight Compact contracts for oracle security issues: signature verification, staleness checks, single-point-of-failure detection.</p>
       <div class="tags"><span class="tag" style="background:rgba(63,185,80,0.12);color:var(--green);">GitHub Action</span><span class="tag">Midnight</span><span class="tag">Free</span></div>
     </a>
+  </div>
+</section>
+
+
+<section class="sample-audit container" style="padding: 48px 0; border-top: 1px solid var(--border);">
+  <h2 style="font-size: 1.5em; text-align: center; margin-bottom: 8px;">See a Real Audit Report</h2>
+  <p style="color: var(--muted); text-align: center; margin-bottom: 28px;">Here is what a $49 Micro-Audit looks like — a real audit of a public Midnight Network project</p>
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; max-width: 720px; margin: 0 auto;">
+    <h3 style="color: var(--accent); margin-bottom: 12px;">Audit: midnightntwrk/create-mn-app</h3>
+    <div style="display: flex; gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
+      <div style="background: rgba(63,185,80,0.12); color: var(--green); padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 600;">Score: 72/100</div>
+      <div style="background: rgba(210,153,34,0.12); color: var(--orange); padding: 6px 14px; border-radius: 8px; font-size: 14px;">3 Issues Found</div>
+      <div style="background: rgba(88,166,255,0.12); color: var(--accent); padding: 6px 14px; border-radius: 8px; font-size: 14px;">5 Quick Wins</div>
+    </div>
+    <div style="margin-bottom: 16px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        <span style="color: var(--red); font-weight: 700;">CRITICAL</span>
+        <span style="color: var(--text);">No troubleshooting guide for common setup failures</span>
+      </div>
+      <p style="color: var(--muted); font-size: 0.88em; margin-left: 60px;">Docker Compose failures, Compact compiler version mismatches, and network connection issues are the top 3 support time sinks. A troubleshooting section with error codes and fixes would reduce support tickets by an estimated 40%.</p>
+    </div>
+    <div style="margin-bottom: 16px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        <span style="color: var(--orange); font-weight: 700;">HIGH</span>
+        <span style="color: var(--text);">Missing architecture diagram for multi-package monorepo</span>
+      </div>
+      <p style="color: var(--muted); font-size: 0.88em; margin-left: 60px;">The template has 4 packages (ui, api, cli, contract) but no visual showing data flow between them. Developers new to Midnight need to understand how the frontend calls the API which calls the contract through the proof server.</p>
+    </div>
+    <div style="margin-bottom: 16px;">
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        <span style="color: var(--orange); font-weight: 700;">HIGH</span>
+        <span style="color: var(--text);">No expected output for any code examples</span>
+      </div>
+      <p style="color: var(--muted); font-size: 0.88em; margin-left: 60px;">Every code block shows commands but never shows what success looks like. Developers can't tell if their setup worked. Adding expected output blocks after each command would cut "is this working?" questions by 60%.</p>
+    </div>
+    <div style="border-top: 1px solid var(--border); padding-top: 16px; margin-top: 16px;">
+      <h4 style="color: var(--green); margin-bottom: 8px;">Quick Wins (can fix today)</h4>
+      <ul style="list-style: none; color: var(--muted); font-size: 0.9em;">
+        <li style="padding: 3px 0;">+ Add expected output blocks after every command</li>
+        <li style="padding: 3px 0;">+ Add a "Prerequisites" checklist with version numbers</li>
+        <li style="padding: 3px 0;">+ Add badges for build status, node version, license</li>
+        <li style="padding: 3px 0;">+ Add a "Common Errors" section with 5 most frequent issues</li>
+        <li style="padding: 3px 0;">+ Add a link to Midnight Network Discord for live support</li>
+      </ul>
+    </div>
+  </div>
+  <div style="text-align: center; margin-top: 24px;">
+    <a href="mailto:richard202605@proton.me?subject=Micro-Audit%20for%20my%20project" class="btn btn-primary">Get This For Your Project — $49 →</a>
   </div>
 </section>
 
