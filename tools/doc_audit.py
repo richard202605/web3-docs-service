@@ -120,19 +120,19 @@ def check_code_examples(owner, repo, tree, token=None):
     paths = [item["path"] for item in tree]
     
     # Examples directory
-    example_dirs = [p for p in paths if re.match(r"^(examples?|demo|sample|tutorial)", p, re.I)]
+    example_dirs = [p for p in paths if re.search(r"(examples?|demo|sample|tutorial|code-example)", p, re.I) and "/" not in p.rstrip("/")]
     if example_dirs:
         score += 15
         findings.append(f"Has examples directory: {example_dirs[0]}")
     
     # Test files
-    test_files = [p for p in paths if re.search(r"(test|spec|__test__)\.[\w]+$", p, re.I)]
+    test_files = [p for p in paths if re.search(r"(test|spec|__test__|\.test\.|\.spec\.)", p, re.I) and p.endswith((".ts", ".js", ".py", ".rs", ".sol"))]
     if test_files:
         score += 10
         findings.append(f"Has {len(test_files)} test file(s)")
     
-    # Scripts/tools directory
-    script_dirs = [p for p in paths if re.match(r"^(scripts?|tools?|bin|cli)", p, re.I)]
+    # Scripts/tools directory (exact directory names, not files like Dockerfile.alltools)
+    script_dirs = [p for p in paths if re.match(r"^(scripts|tools|bin|cli|audit-tools)$", p.split("/")[0], re.I)]
     if script_dirs:
         score += 12
         findings.append(f"Has tools/scripts directory: {script_dirs[0]}")
@@ -173,8 +173,8 @@ def check_documentation_files(owner, repo, tree, token=None):
     findings = []
     paths = [item["path"] for item in tree]
     
-    # Docs directory
-    doc_dirs = [p for p in paths if re.match(r"^(docs?|documentation|wiki|guides?)", p, re.I)]
+    # Docs directory (must be a directory, not a file like Dockerfile)
+    doc_dirs = [p for p in paths if re.match(r"^(docs|documentation|wiki|guides)$", p.split("/")[0], re.I)]
     if doc_dirs:
         score += 15
         findings.append(f"Has documentation directory: {doc_dirs[0]}")
