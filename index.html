@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web3 Developer Documentation Service — Tutorials, Guides, and Technical Content</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --green: #3fb950;
+    --orange: #d29922;
+    --purple: #bc8cff;
+    --red: #f85149;
+    --gradient: linear-gradient(135deg, #58a6ff 0%, #bc8cff 100%);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  
+  /* Header */
+  header { padding: 60px 0 40px; text-align: center; }
+  .badge { display: inline-block; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 4px 14px; font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+  h1 { font-size: 2.4em; font-weight: 700; line-height: 1.2; margin-bottom: 16px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { font-size: 1.15em; color: var(--muted); max-width: 640px; margin: 0 auto 32px; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+  .btn-primary { background: var(--accent); color: var(--bg); }
+  .btn-primary:hover { background: #79c0ff; text-decoration: none; }
+  .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--accent); text-decoration: none; }
+
+  /* Problem */
+  .problem { padding: 48px 0; border-top: 1px solid var(--border); }
+  .problem h2 { font-size: 1.5em; margin-bottom: 20px; }
+  .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .pain-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+  .pain-card .icon { font-size: 24px; margin-bottom: 8px; }
+  .pain-card h3 { font-size: 1em; margin-bottom: 6px; }
+  .pain-card p { font-size: 0.9em; color: var(--muted); }
+
+  /* What I deliver */
+  .deliver { padding: 48px 0; border-top: 1px solid var(--border); }
+  .deliver h2 { font-size: 1.5em; margin-bottom: 8px; }
+  .deliver .lead { color: var(--muted); margin-bottom: 28px; }
+  .deliver-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+  .deliver-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 24px; }
+  .deliver-card h3 { font-size: 1.05em; margin-bottom: 8px; color: var(--accent); }
+  .deliver-card ul { list-style: none; }
+  .deliver-card li { padding: 4px 0; font-size: 0.92em; color: var(--muted); }
+  .deliver-card li::before { content: "✓ "; color: var(--green); font-weight: 700; }
+
+  /* Pricing */
+  .pricing { padding: 48px 0; border-top: 1px solid var(--border); }
+  .pricing h2 { font-size: 1.5em; text-align: center; margin-bottom: 8px; }
+  .pricing .lead { color: var(--muted); text-align: center; margin-bottom: 32px; }
+  .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+  .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px; position: relative; }
+  .price-card.featured { border-color: var(--accent); }
+  .price-card.featured::before { content: "Most Popular"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: var(--bg); font-size: 12px; font-weight: 700; padding: 3px 12px; border-radius: 10px; }
+  .price-card h3 { font-size: 1.1em; margin-bottom: 4px; }
+  .price-card .price { font-size: 2em; font-weight: 700; margin: 8px 0; }
+  .price-card .price span { font-size: 0.45em; font-weight: 400; color: var(--muted); }
+  .price-card .desc { font-size: 0.88em; color: var(--muted); margin-bottom: 16px; }
+  .price-card ul { list-style: none; margin-bottom: 20px; }
+  .price-card li { padding: 4px 0; font-size: 0.9em; color: var(--muted); }
+  .price-card li::before { content: "→ "; color: var(--accent); }
+  .price-card .btn { width: 100%; justify-content: center; }
+
+  /* Portfolio */
+  .portfolio { padding: 48px 0; border-top: 1px solid var(--border); }
+  .portfolio h2 { font-size: 1.5em; margin-bottom: 8px; }
+  .portfolio .lead { color: var(--muted); margin-bottom: 28px; }
+  .repo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+  .repo-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; transition: border-color 0.2s; }
+  .repo-card:hover { border-color: var(--accent); text-decoration: none; }
+  .repo-card h4 { font-size: 0.95em; color: var(--accent); margin-bottom: 4px; }
+  .repo-card p { font-size: 0.82em; color: var(--muted); }
+  .repo-card .tags { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .repo-card .tag { font-size: 11px; background: rgba(88,166,255,0.12); color: var(--accent); padding: 2px 8px; border-radius: 10px; }
+  .portfolio-link { text-align: center; margin-top: 24px; }
+
+  /* Process */
+  .process { padding: 48px 0; border-top: 1px solid var(--border); }
+  .process h2 { font-size: 1.5em; text-align: center; margin-bottom: 28px; }
+  .steps { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+  .step { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; width: 200px; text-align: center; }
+  .step .num { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: var(--gradient); color: var(--bg); font-weight: 700; margin-bottom: 10px; }
+  .step h4 { font-size: 0.95em; margin-bottom: 4px; }
+  .step p { font-size: 0.82em; color: var(--muted); }
+
+  /* Guarantee */
+  .guarantee { padding: 48px 0; border-top: 1px solid var(--border); text-align: center; }
+  .guarantee-box { background: var(--surface); border: 1px solid var(--green); border-radius: 12px; padding: 32px; max-width: 600px; margin: 0 auto; }
+  .guarantee-box h2 { font-size: 1.3em; color: var(--green); margin-bottom: 10px; }
+  .guarantee-box p { color: var(--muted); font-size: 0.95em; }
+
+  /* CTA bottom */
+  .cta-bottom { padding: 48px 0; border-top: 1px solid var(--border); text-align: center; }
+  .cta-bottom h2 { font-size: 1.5em; margin-bottom: 12px; }
+  .cta-bottom p { color: var(--muted); margin-bottom: 24px; }
+
+  /* Footer */
+  footer { padding: 32px 0; border-top: 1px solid var(--border); text-align: center; font-size: 0.82em; color: var(--muted); }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 1.7em; }
+    .price-grid, .deliver-grid, .pain-grid { grid-template-columns: 1fr; }
+    .steps { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<header class="container">
+  <div class="badge">Web3 Documentation Service</div>
+  <h1>Your Protocol Has Users.<br>Does It Have Docs?</h1>
+  <p class="subtitle">I write developer tutorials, build diagnostic tools, and create technical guides that help Web3 projects onboard developers faster. 11 published tutorials with runnable code across 3 blockchain ecosystems.</p>
+  <div class="cta-row">
+    <a href="mailto:richard202605@proton.me?subject=Web3%20Documentation%20Inquiry" class="btn btn-primary">Get a Free Doc Audit →</a>
+    <a href="#portfolio" class="btn btn-secondary">See My Work</a>
+  </div>
+</header>
+
+<section class="problem container">
+  <h2>The Documentation Gap Is Costing You Developers</h2>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="icon">📉</div>
+      <h3>Developer Churn</h3>
+      <p>Developers abandon protocols with unclear docs. 60% of devs say poor documentation is their #1 frustration.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">🐛</div>
+      <h3>Repetitive Support Tickets</h3>
+      <p>Your team answers the same integration questions daily. Each ticket costs $15-50 in engineering time.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">🏗️</div>
+      <h3>Incomplete Guides</h3>
+      <p>API references exist, but step-by-step tutorials with working code examples are missing. Devs need both.</p>
+    </div>
+  </div>
+</section>
+
+<section class="deliver container">
+  <h2>What I Deliver</h2>
+  <p class="lead">Technical content that developers actually use — with runnable code, not just prose.</p>
+  <div class="deliver-grid">
+    <div class="deliver-card">
+      <h3>Developer Tutorials</h3>
+      <ul>
+        <li>2,500–4,000 word deep-dive guides</li>
+        <li>Working code in TypeScript, Python, Rust, Solidity</li>
+        <li>Step-by-step with expected outputs</li>
+        <li>Common pitfalls and edge cases covered</li>
+        <li>Ready to publish on docs site or Dev.to</li>
+      </ul>
+    </div>
+    <div class="deliver-card">
+      <h3>Diagnostic and Audit Tools</h3>
+      <ul>
+        <li>CLI scripts that check real issues</li>
+        <li>Automated error detection and reporting</li>
+        <li>Security audit checklists with tooling</li>
+        <li>CI/CD pipeline templates</li>
+        <li>Docker-based test environments</li>
+      </ul>
+    </div>
+    <div class="deliver-card">
+      <h3>Integration Guides</h3>
+      <ul>
+        <li>Wallet connection and transaction flows</li>
+        <li>Proof system integration patterns</li>
+        <li>Smart contract state management</li>
+        <li>Error handling and retry strategies</li>
+        <li>Production deployment checklists</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="pricing container">
+  <h2>Simple, Transparent Pricing</h2>
+  <p class="lead">No retainers. No surprises. Pay per deliverable.</p>
+  <div class="price-grid">
+    <div class="price-card">
+      <h3>Tutorial</h3>
+      <div class="price">$200–400 <span>per tutorial</span></div>
+      <p class="desc">Single topic, deep-dive with code</p>
+      <ul>
+        <li>2,500–4,000 words</li>
+        <li>Working code repository</li>
+        <li>Diagnostic script or tool</li>
+        <li>2 rounds of revisions</li>
+        <li>3-day turnaround</li>
+      </ul>
+      <a href="mailto:richard202605@proton.me?subject=Tutorial%20Quote%20Request" class="btn btn-secondary">Get Quote</a>
+    </div>
+    <div class="price-card featured">
+      <h3>Deep Dive</h3>
+      <div class="price">$500–800 <span>per guide</span></div>
+      <p class="desc">Complex topic with multiple code modules</p>
+      <ul>
+        <li>4,000–6,000 words</li>
+        <li>Multiple code modules (3-6 files)</li>
+        <li>Diagnostic tool + test suite</li>
+        <li>Docker test environment</li>
+        <li>3 rounds of revisions</li>
+        <li>5-day turnaround</li>
+      </ul>
+      <a href="mailto:richard202605@proton.me?subject=Deep%20Dive%20Quote%20Request" class="btn btn-primary">Get Quote</a>
+    </div>
+    <div class="price-card">
+      <h3>Documentation Suite</h3>
+      <div class="price">$1,000–2,000 <span>per suite</span></div>
+      <p class="desc">Multi-part series with CI and tools</p>
+      <ul>
+        <li>3-5 related tutorials</li>
+        <li>Shared code library</li>
+        <li>CI/CD pipeline setup</li>
+        <li>GitHub Pages documentation site</li>
+        <li>5 rounds of revisions</li>
+        <li>10-day turnaround</li>
+      </ul>
+      <a href="mailto:richard202605@proton.me?subject=Doc%20Suite%20Quote%20Request" class="btn btn-secondary">Get Quote</a>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio container" id="portfolio">
+  <h2>Portfolio: 11 Published Tutorials</h2>
+  <p class="lead">All submissions include GitHub repositories with runnable code, diagnostic tools, and test suites.</p>
+  <div class="repo-grid">
+    <a href="https://github.com/richard202605/midnight-security-checklist" class="repo-card">
+      <h4>Security Checklist</h4>
+      <p>Nullifier uniqueness, selective disclosure, overflow guards, proof server testing</p>
+      <div class="tags"><span class="tag">Security</span><span class="tag">Compact</span><span class="tag">ZK</span></div>
+    </a>
+    <a href="https://github.com/richard202605/midnight-error-1010-debugging" class="repo-card">
+      <h4>Error 1010 Debugging</h4>
+      <p>6 root causes, diagnostic script, 6 TypeScript modules, proof server health checks</p>
+      <div class="tags"><span class="tag">Debugging</span><span class="tag">TypeScript</span><span class="tag">Python</span></div>
+    </a>
+    <a href="https://github.com/richard202605/night-token-funding-guide" class="repo-card">
+      <h4>NIGHT Token Funding</h4>
+      <p>Interactive funding decision tree, exchange status checker, wallet setup guides</p>
+      <div class="tags"><span class="tag">Tokens</span><span class="tag">Python</span><span class="tag">Bash</span></div>
+    </a>
+    <a href="https://github.com/richard202605/midnight-proof-server-debugging" class="repo-card">
+      <h4>Proof Server Debugging</h4>
+      <p>Bash diagnostic script (7 checks), TypeScript version checker, Docker health template</p>
+      <div class="tags"><span class="tag">Infrastructure</span><span class="tag">Docker</span><span class="tag">Bash</span></div>
+    </a>
+    <a href="https://github.com/richard202605/midnight-contract-testing-guide" class="repo-card">
+      <h4>Contract Testing Guide</h4>
+      <p>Vitest fixtures, Docker Compose test stack, GitHub Actions CI pipeline</p>
+      <div class="tags"><span class="tag">Testing</span><span class="tag">CI/CD</span><span class="tag">Docker</span></div>
+    </a>
+    <a href="https://github.com/richard202605/midnight-dapp-connector-tutorial" class="repo-card">
+      <h4>DApp Connector</h4>
+      <p>3 TypeScript modules: wallet detection, transaction flow, state subscriptions (V4 API)</p>
+      <div class="tags"><span class="tag">Frontend</span><span class="tag">TypeScript</span><span class="tag">Wallet</span></div>
+    </a>
+    <a href="https://github.com/richard202605/midnight-proof-integration-backend" class="repo-card">
+      <h4>Proof Integration</h4>
+      <p>Express REST API, wallet/proof-client/contract-client, health checks, retry strategies</p>
+      <div class="tags"><span class="tag">Backend</span><span class="tag">Node.js</span><span class="tag">REST</span></div>
+    </a>
+    <a href="https://github.com/richard202605/midnight-contract-state-viewer" class="repo-card">
+      <h4>Contract State Viewer</h4>
+      <p>React frontend, Apollo Client, WebSocket subscriptions, ledger field type parser</p>
+      <div class="tags"><span class="tag">Frontend</span><span class="tag">React</span><span class="tag">GraphQL</span></div>
+    </a>
+    <a href="https://github.com/richard202605/midnight-verified-math" class="repo-card">
+      <h4>Verified Math in ZK</h4>
+      <p>4 Compact contracts, Python static audit tool (6 trap detectors), 16 test cases</p>
+      <div class="tags"><span class="tag">ZK</span><span class="tag">Compact</span><span class="tag">Python</span></div>
+    </a>
+    <a href="https://github.com/richard202605/midnight-dust-sponsorship-guide" class="repo-card">
+      <h4>DUST Sponsorship</h4>
+      <p>TypeScript sponsor service, client integration, Python DUST analyzer tool</p>
+      <div class="tags"><span class="tag">Sponsorship</span><span class="tag">TypeScript</span><span class="tag">Python</span></div>
+    </a>
+    <a href="https://github.com/richard202605/midnight-contract-size-guide" class="repo-card">
+      <h4>Contract Size Limits</h4>
+      <p>Circuit budget tracking, 3 splitting strategies, Python size analyzer, example contracts</p>
+      <div class="tags"><span class="tag">Optimization</span><span class="tag">Compact</span><span class="tag">Python</span></div>
+    </a>
+  </div>
+  <div class="portfolio-link">
+    <a href="https://richard202605.github.io/midnight-tutorials-portfolio/" class="btn btn-secondary">View Full Portfolio with Priority Categories →</a>
+  </div>
+</section>
+
+<section class="process container">
+  <h2>How It Works</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h4>Scope Call</h4>
+      <p>15-min chat to identify your biggest doc gap</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h4>Proposal</h4>
+      <p>Fixed-price quote with deliverables and timeline</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h4>Draft</h4>
+      <p>Working code + tutorial draft for your review</p>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h4>Deliver</h4>
+      <p>Final version with revisions, ready to publish</p>
+    </div>
+  </div>
+</section>
+
+<section class="guarantee container">
+  <div class="guarantee-box">
+    <h2>Quality Guarantee</h2>
+    <p>If the delivered tutorial doesn't meet your standards after revisions, you don't pay. I stand behind every piece of code and every word I write. All code is tested, all claims are verified, and all tutorials include working examples you can run yourself.</p>
+  </div>
+</section>
+
+<section class="cta-bottom container">
+  <h2>Ready to Fill Your Documentation Gap?</h2>
+  <p>Get a free 15-minute documentation audit. I'll identify your biggest developer onboarding bottleneck and suggest the highest-impact tutorial to write first.</p>
+  <div class="cta-row">
+    <a href="mailto:richard202605@proton.me?subject=Free%20Doc%20Audit%20Request" class="btn btn-primary">Book Free Audit →</a>
+    <a href="https://github.com/richard202605" class="btn btn-secondary">GitHub Profile</a>
+  </div>
+</section>
+
+<footer class="container">
+  <p>Web3 Developer Documentation Service · 11 Published Tutorials · TypeScript, Python, Rust, Solidity, Compact</p>
+  <p style="margin-top:8px">Contact: richard202605@proton.me · <a href="https://github.com/richard202605">GitHub</a></p>
+</footer>
+
+</body>
+</html>
